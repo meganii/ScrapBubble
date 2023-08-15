@@ -9,7 +9,10 @@ import { makeThrottle } from "./throttle.ts";
 
 const cacheVersion = "0.6.5"; // release前に更新する
 const cacheName = `ScrapBubble-${cacheVersion}`;
-const cache = await globalThis.caches.open(cacheName);
+let cache: Cache;
+(async () => {
+  cache = await globalThis.caches.open(cacheName);
+})();
 
 // 古いcacheがあったら削除しておく
 // 他の操作をブロックする必要はない
