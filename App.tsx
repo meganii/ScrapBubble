@@ -124,7 +124,7 @@ export const App = (
     scrapbox.addListener("page:changed", hide);
     return () => scrapbox.removeListener("page:changed", hide);
   }, [hide]);
-
+  
   return (
     <>
       <link
@@ -132,7 +132,7 @@ export const App = (
         href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.12.0/katex.min.css"
       />
       <style>{CSS}</style>
-      <UserCSS style={style} />
+      { style !== '' && <UserCSS style={style} />}
       {bubbles.map((bubble) => (
         <Bubble
           key={toId(bubble.source.project, bubble.source.title)}
